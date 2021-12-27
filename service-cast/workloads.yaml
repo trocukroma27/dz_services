@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-cast
+spec:
+  selector:
+    app: service-cast
+  type: NodePort
+  ports:
+    - name: http
+      port: 8082
+      nodePort: 31002
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-cast
+spec:
+  selector:
+    matchLabels:
+      app: service-cast
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-cast
+    spec:
+      containers:
+        - name: server
+          image: trotsyukroma/service-cast
+          ports:
+            - name: http
+              containerPort: 8082
+
+---

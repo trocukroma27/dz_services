@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-genre
+spec:
+  selector:
+    app: service-genre
+  type: NodePort
+  ports:
+    - name: http
+      port: 8081
+      nodePort: 31001
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-genre
+spec:
+  selector:
+    matchLabels:
+      app: service-genre
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-genre
+    spec:
+      containers:
+        - name: server
+          image: trotsyukroma/service-genre
+          ports:
+            - name: http
+              containerPort: 8081
+
+---

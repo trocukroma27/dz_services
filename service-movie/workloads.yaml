@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-movie
+spec:
+  selector:
+    app: service-movie
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      nodePort: 31000
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-movie
+spec:
+  selector:
+    matchLabels:
+      app: service-movie
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-movie
+    spec:
+      containers:
+        - name: server
+          image: trotsyukroma/service-movie
+          ports:
+            - name: http
+              containerPort: 8080
+
+---
