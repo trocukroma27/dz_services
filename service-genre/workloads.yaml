@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: trotsyukroma/service-genre
+          image: trotsyukroma/service-genre:latest
           ports:
             - name: http
               containerPort: 8081

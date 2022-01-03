@@ -34,7 +34,7 @@ public final class MovieService {
             String[] actorsIdArr = cast.split(",");
             actorsList = new ArrayList<>();
             for (String actorId : actorsIdArr) {
-                Actor actor = restTemplate.getForObject("http://localhost:8082/cast/" + actorId, Actor.class);
+                Actor actor = restTemplate.getForObject("http://192.168.59.100:8082/cast/" + actorId, Actor.class);
                 actorsList.add(actor);
             }
 
@@ -42,7 +42,7 @@ public final class MovieService {
             String[] genreIdArr = genres.split(",");
             genreList = new ArrayList<>();
             for (String genreId : genreIdArr) {
-                Genre genre = restTemplate.getForObject("http://localhost:8081/genres/" + genreId, Genre.class);
+                Genre genre = restTemplate.getForObject("http://192.168.59.100:8081/genres/" + genreId, Genre.class);
                 genreList.add(genre);
             }
 
@@ -65,7 +65,7 @@ public final class MovieService {
             String[] actorsIdArr = cast.split(",");
             List<Actor> actorsList = new ArrayList<>();
             for (String actorId : actorsIdArr) {
-                Actor actor = restTemplate.getForObject("http://localhost:8082/cast/" + actorId, Actor.class);
+                Actor actor = restTemplate.getForObject("http://192.168.59.100:8082/cast/" + actorId, Actor.class);
                 actorsList.add(actor);
             }
 
@@ -73,7 +73,7 @@ public final class MovieService {
             String[] genreIdArr = genres.split(",");
             List<Genre> genreList = new ArrayList<>();
             for (String genreId : genreIdArr) {
-                Genre genre = restTemplate.getForObject("http://localhost:8081/genres/" + genreId, Genre.class);
+                Genre genre = restTemplate.getForObject("http://192.168.59.100:8081/genres/" + genreId, Genre.class);
                 genreList.add(genre);
             }
 
